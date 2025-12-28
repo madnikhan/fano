@@ -93,9 +93,54 @@ const components = {
     h3: (props: any) => (
       <h3 className="text-2xl font-bold mt-4 mb-2">{props.children}</h3>
     ),
+    h4: (props: any) => (
+      <h4 className="text-xl font-bold mt-3 mb-2">{props.children}</h4>
+    ),
+    blockquote: (props: any) => (
+      <blockquote className="border-l-4 border-blue-500 pl-4 italic my-4 text-gray-700">
+        {props.children}
+      </blockquote>
+    ),
     normal: (props: any) => (
       <p className="mb-4 leading-relaxed">{props.children}</p>
     ),
+  },
+  list: {
+    bullet: (props: any) => (
+      <ul className="list-disc list-inside mb-4 space-y-2 ml-4">{props.children}</ul>
+    ),
+    number: (props: any) => (
+      <ol className="list-decimal list-inside mb-4 space-y-2 ml-4">{props.children}</ol>
+    ),
+  },
+  listItem: {
+    bullet: (props: any) => <li className="mb-1">{props.children}</li>,
+    number: (props: any) => <li className="mb-1">{props.children}</li>,
+  },
+  marks: {
+    strong: (props: any) => <strong className="font-bold">{props.children}</strong>,
+    em: (props: any) => <em className="italic">{props.children}</em>,
+    code: (props: any) => (
+      <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono text-gray-800">
+        {props.children}
+      </code>
+    ),
+    underline: (props: any) => <span className="underline">{props.children}</span>,
+    'strike-through': (props: any) => <span className="line-through text-gray-500">{props.children}</span>,
+    link: ({ value, children }: any) => {
+      const target = value?.target || '';
+      const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
+      return (
+        <a
+          href={value?.href}
+          target={target}
+          rel={rel}
+          className="text-blue-600 hover:text-blue-800 underline"
+        >
+          {children}
+        </a>
+      );
+    },
   },
 };
 
